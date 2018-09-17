@@ -1,0 +1,98 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0, parent_title) }}
+
+{% macro menu_links(items, attributes, menu_level, parent_title) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul class="topbar-nav nav">
+    {% else %}
+
+      {% if menu_level < 3 %}
+        {% set ul_class_name = 'nav-submenu' %}
+      {% else %}
+        {% set ul_class_name = '' %}
+      {% endif %}
+
+      {% if menu_level == 1%}
+        {% set loop_break = false %}
+        {% for item in items if item.below %}
+          {% if not loop_break %}
+            <div class="mymega-has-much nav-submenu">
+            {% set ul_class_name = '' %}
+            {% set loop_break = true %}
+          {% endif %}
+        {% endfor %}      
+      {% endif %}
+      <ul class="{{ul_class_name}}">
+	  
+	  {% if menu_level == 2%}
+		  <!--<li class="mymega-title">{{parent_title}}</li>-->
+	  {% endif %}
+
+    {% endif %}
+    {% for item in items %}
+      {%
+        set item_classes = [
+          item.is_expanded ? 'expanded ',
+          item.is_expanded ? 'dropdown',
+		  item.is_expanded ? 'has-dropdown',
+          item.in_active_trail ? 'active',
+		  'nav-item'
+        ]
+      %}
+	  
+	  
+	  
+      {% if menu_level == 0 and item.is_expanded %}
+        <li{{ item.attributes.addClass(item_classes) }}>
+        
+		    {{ link(item.title, item.url, { 'class':['nav-link']}) }}
+      {% else %}
+        <li{{ item.attributes.addClass(item_classes) }}>
+        {{ link(item.title, item.url, { 'class':['dropdown__trigger','nav-link']}) }}
+      {% endif %}
+      {% if item.below %}
+	      {{ menus.menu_links(item.below, attributes.removeClass('nav', 'navbar-nav'), menu_level + 1, item.title) }}
+		  
+        
+      {% endif %}
+      </li>
+    {% endfor %}
+      </ul>
+      
+      {% if menu_level == 1%}
+        {% set loop_break = false %}
+        {% for item in items if item.below %}
+          {% if not loop_break %}
+            </div>
+            {% set loop_break = true %}
+          {% endif %}
+        {% endfor %}      
+      {% endif %}
+
+
+  {% endif %}
+{% endmacro %}

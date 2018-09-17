@@ -1,0 +1,327 @@
+/*------------------------------------------------------------------------
+# Pivot Drupal
+# ------------------------------------------------------------------------
+# Created by Symphony Themes
+# Websites:  http://www.symphonythemes.com -  Email: info@symphonythemes.com
+--------------------------------------------------------------------------
+    1.   Custom CSS
+    2.   Forms
+    3.   Blog & Portfolio
+    4.   Others
+--------------------------------------------------------------------------------*/
+
+/* 01. Custom CSS
+ --------------------------------------------------------------------------------*/
+html { font-size: 100%;}
+body { position: unset; }
+@media screen and (min-width: 768px) {
+  body { margin-top: 0; }
+}
+.form-group:last-child, .panel:last-child, .popover ol:last-child, .popover ul:last-child, p:last-child {
+  margin-bottom: 1rem;
+}
+
+/* Paddings and margins */
+pb0 { padding-bottom: 0 !important; }
+pt0 { padding-top: 0 !important; }
+
+/* Backgrounds */
+.bg-purple {
+  background-color: #7a54d8;
+  color: #fff;
+}
+.bg-purple-light {
+  background-color: #c2b2cd;
+  color: #fff;
+}
+.bg-blue-light {
+  background-color: #8ea6e6;
+  color: #fff;
+}
+.bg-pink {
+  background-color: #f64d62;
+  color: #fff;
+}
+.bg-skype {
+  background-color: #00aff0;
+  color: #fff;
+}
+.bg-project {
+  background-color: #7a54d8;
+  color: #fff;
+}
+.bg-job {
+  background-color: #c2b2cd;
+  color: #fff;
+}
+
+/* Menu */
+#block-thesaas-main-menu {
+  margin-bottom: 10px;
+}
+.nav-item,
+.nav-link {
+  cursor: pointer;
+}
+
+/* Toolbar */
+.toolbar-oriented .toolbar-tray {
+  position: fixed;
+}
+
+/* Split section */
+h6.section-info {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding-top: 60px;
+}
+.thesaas-sections-split.section,
+.thesaas-sections-split .main-content .topbar,
+.thesaas-sections-split .main-content .site-footer {
+  margin: 30px 50px 100px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ebebeb;
+}
+.thesaas-sections-split .main-content .topbar {
+  position: static;
+}
+.thesaas-sections-split .main-content .topbar .topbar-toggler {
+  display: none;
+}
+
+/* Admin toolbar */
+#toolbar-administration #toolbar-bar {
+  overflow: hidden;
+}
+
+/* Regions */
+.topbar:not(.topbar-inverse) + .main-content {
+  padding-top: 70px;
+}
+
+/* Nav Tab */
+.user-logged-in nav.tabs {
+  position: fixed;
+  left: 0;
+  top: 80px;
+  transition: all 0.5s ease 0.25s;
+  z-index: 1000;
+  width: 80px;
+} 
+.user-logged-in nav.tabs ul.tabs--primary {
+  background: #fff none repeat scroll 0 0;
+  border: medium none;
+  list-style: outside none none;
+  opacity: 0.9;
+}
+.user-logged-in nav.tabs ul.tabs--primary li {
+  float: none;
+  opacity: 0.8;
+  width: 100%;
+}
+.user-logged-in nav.tabs ul.tabs--primary li a {
+  margin-right: 0;
+}
+.user-logged-in nav.tabs ul.tabs--primary li.active a, 
+.user-logged-in nav.tabs ul.tabs--primary li:hover a {
+  background: #ffb500 none repeat scroll 0 0;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+}
+.user-logged-in nav.tabs ul.tabs--primary li.active, 
+.user-logged-in nav.tabs ul.tabs--primary li:hover {
+  opacity: 1;
+}
+
+/* Footer menu */
+#block-footer .nav {
+  -moz-box-pack: center;
+  justify-content: center;
+}
+#block-footer .nav li {
+  padding-left: 20px;
+  padding-right: 20px;
+  -moz-box-align: center;
+  -moz-box-pack: justify;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+#block-footer li a {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -moz-box-flex: 1;
+  color: #535353;
+  flex-grow: 1;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+/* Video background */
+
+/*--------------------------------------------------------------------------------*/
+/*
+/* 02. Forms
+/*
+ --------------------------------------------------------------------------------*/
+
+button#edit-preview {
+  display: none;
+}
+
+/* Contact form */
+.contact-form input,
+.contact-form textarea,
+.user-form input,
+.user-login-form input,
+.user-pass input {
+  font-size: 14px;
+  line-height: 32px;
+  padding: 7px 20px;
+  height: auto;
+}
+.contact-form .form-submit,
+.user-form .form-submit,
+.user-login-form .form-submit {
+  font-size: 12px;
+  padding: 9px 34px;
+  width: 100%;
+}
+
+/* User forms */
+body.path-user .main-content {
+  background: url(../img/bg-girl.jpg) center center no-repeat;
+  height: 100vh;
+}
+body.path-user .main-content .container,
+body.path-user .main-content .container .row {
+  height: 100vh;
+}
+body.path-user .main-content .container .row > div {
+  align-self: center !important;
+  -webkit-align-self: center !important;
+  -ms-flex-item-align: center !important;
+  -ms-grid-row-align: center !important;
+}
+body.path-user .main-content .region-content {
+  padding: 50px;
+  background: #fff;
+  width: 600px;
+  margin: 0 auto;
+  border: 0 none;
+  border-radius: 0;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.05);
+}
+body.path-user nav.topbar,
+body.path-user .site-footer {
+  display: none;
+}
+body.user-logged-in.path-user nav.topbar,
+body.user-logged-in.path-user .site-footer {
+  display: block;
+}
+.user-login-form,
+.user-register-form,
+.user-pass {
+  padding-top: 20px;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*
+/* 03. Blog, Portfolio, Job
+/*
+ --------------------------------------------------------------------------------*/
+.row.gap-y .col, .row.gap-y [class*="col-"] {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+/* Article */
+.node--type-article .blog-image-holder {
+  padding: 30px 0;
+}
+.node--type-article .blog-image-holder img {
+  width: 100%;
+}
+.node--type-article .field--name-field-tags {
+  padding: 20px 0;
+}
+.node--type-article .field--name-field-tags .field--item {
+  display: inline;
+  padding-right: 10px;
+}
+.node--type-article .field--name-field-tags .field--item a {
+  background-color: #f5f6f7;
+  color: #788394;
+  border-radius: 10rem;
+  padding: 6px 16px 7px;
+  font-size: 85%;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.node--type-article #section-content ul.links {
+  padding-top: 20px;
+  float: right;
+}
+.node--type-article #section-comment h2 {
+  padding-bottom: 20px;
+}
+.node--type-article #section-comment article.comment {
+  padding-bottom: 20px;
+}
+.node--type-article #section-comment .field--name-user-picture img {
+  border-radius: 100px;
+}
+
+/* Portfolio */
+.view-portfolio .view-content {
+  width: 100%;
+}
+.view-portfolio h5 a,
+.view-portfolio h5 a:hover {
+  color: #fff;
+}
+
+.page-node-type-project .region-content .project-content .field--name-body {
+  margin-bottom: 20px;
+}
+.page-node-type-project .region-content .project-content .field--name-body .field--label {
+  color: #37404d;
+  font-family: "Dosis","Open Sans",sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.page-node-type-project .region-content .project-content .field {
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.page-node-type-project .region-content .project-content .field:last-child {
+  border-bottom: none;
+}
+.page-node-type-project .region-content .project-content .field--type-string .field--label,
+.page-node-type-project .region-content .project-content .field--type-datetime .field--label,
+.page-node-type-project .region-content .project-content .field--type-link .field--label {
+  color: #b5b9bf;
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.page-node-type-project .region-content .project-content .field--type-string .field--item {
+} 
+
+/* Job */
+.page-node-type-job .field--name-field-job-location {
+  display: inline;
+}

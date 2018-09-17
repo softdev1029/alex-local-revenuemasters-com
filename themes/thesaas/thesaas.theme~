@@ -1,0 +1,129 @@
+<?php
+/**
+ * @file
+ * Stack theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+ 
+ 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function pivot_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    if ($content_type == 'full_page' or $content_type == 'article' or $content_type == 'project') {
+	  $suggestions[] = 'page__fullwidth';
+	}
+  }
+  /*
+  $view = \Drupal::service('entity.manager')->getStorage('view')->load('portfolio_wide');
+  if ($view) {
+    $suggestions[] = 'page__fullwidth';
+  }
+  if (($views_page = views_get_page_view()) && $views_page->name === "portfolio_wide") {
+    $suggestions[] = 'page__fullwidth';
+    }
+  */
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
+  if (!empty($request) && $request == 'portfolio_wide' ) {
+    $suggestions[] = 'page__fullwidth';
+  }
+}
+
+/**
+ * Add color, menu and theme settings
+ */
+function pivot_preprocess_page(&$variables) {
+  // Theme color
+  $color = theme_get_setting('theme_color');
+  if ($color != 'default') {
+    $variables['#attached']['library'][] = 'pivot/'.$color.'-styling';
+  }
+  
+  // Theme menu
+  $variables['mainmenu_class'] = 'bbb';
+  
+  $mainmenu_transparent_flag = 0;
+  
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node->hasField('field_mainmenu_transparent')) {
+	  //var_dump($node->get('field_mainmenu_transparent')->getValue());
+	  $mainmenu_transparent = $node->get('field_mainmenu_transparent')->getValue();
+	  if($mainmenu_transparent[0]['value']) {
+	    $variables['mainmenu_class'] = 'overlay-bar';
+        $mainmenu_transparent_flag = 1;
+	  }
+	}
+	$node_type = \Drupal::entityManager()->getStorage('node_type')->load($node->getType())->get('name');
+	if($node_type == 'Project' ) {
+	    $variables['mainmenu_class'] = 'overlay-bar';
+        $mainmenu_transparent_flag = 1;
+	}
+	if($node_type == 'Article' ) {
+	    $bg_img_url = $node->get('field_background_image')->getValue();
+		if($bg_img_url[0]) {
+	      $variables['mainmenu_class'] = 'overlay-bar';
+          $mainmenu_transparent_flag = 1;
+		}
+	}
+  }
+  
+  
+  $current_path = \Drupal::service('path.current')->getPath();
+  if($current_path == '/user/login' or $current_path == '/user/register' or $current_path == '/user/password' ) {
+	      $variables['mainmenu_class'] = 'overlay-bar';
+          $mainmenu_transparent_flag = 1;
+  }
+  
+  
+  $menu = theme_get_setting('theme_menu');
+  if( !$mainmenu_transparent_flag) {
+    if( $menu == 'menudark') {
+      $variables['mainmenu_class'] = 'bg--dark';
+    }
+    elseif( $menu == 'menulight') {
+      $variables['mainmenu_class'] = 'bg--secondary';
+    }
+    else {
+      $variables['mainmenu_class'] = 'nabar-default';
+    }
+  }
+  
+  
+}
+
+/**
+ * Process block content
+ */
+function pivot_theme_suggestions_block_alter(&$suggestions, $variables) {
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof \Drupal\block_content\BlockContentInterface) {
+    $suggestions[] = 'block__' . $content['#block_content']->bundle();
+  }
+   
+}
+
+/**
+ * Process block content
+ */
+function pivot_preprocess_block(&$variables) {
+  $variables['base_path'] = base_path();
+  
+
+}
+
+
+/**
+* Implements hook_form_alter() to add classes to the search form.
+*/
+function pivot_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['search_block_form', 'search_form'])) {
+    $key = ($form_id == 'search_block_form') ? 'actions' : 'basic';
+    
+    $form[$key]['submit']['#access'] = false;
+  } 
+}
+

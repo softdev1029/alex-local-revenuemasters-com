@@ -1,0 +1,21 @@
+global-styling:
+  version: 8.0
+  css:
+    base:
+      css/flexslider.min.css: {}
+      css/lightbox.min.css: {}
+      css/line-icons.min.css: {}
+      css/thesaas.css: {}
+      css/style.css: {}
+      css/custom.css: {}
+      css/local.css: {}
+  js:
+    js/aos.js: {}
+    js/lity.min.js: {}
+    js/waypoints.min.js: {}
+    js/thesaas.js: {}
+    js/script.js: {}
+ckeditor_js:
+  version: 8.0
+  js:
+    js/ckeditor.config.js

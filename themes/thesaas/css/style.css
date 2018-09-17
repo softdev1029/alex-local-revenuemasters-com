@@ -1,0 +1,90 @@
+
+.thesaas-sections-split .section,
+.thesaas-sections-split .main-content .topbar,
+.thesaas-sections-split .main-content .site-footer {
+  margin: 30px 50px 100px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ebebeb;
+}
+
+.thesaas-sections-split .main-content .topbar {
+  position: static;
+}
+
+.thesaas-sections-split .main-content .topbar .topbar-toggler {
+  display: none;
+}
+
+.thesaas-sections-split .section-info {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding-top: 60px;
+}
+
+.thesaas-sections-split.topbar-reveal .main-content .topbar-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .thesaas-sections-split .section,
+  .thesaas-sections-split .main-content .site-footer {
+    margin: 30px 0 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+}
+
+nav.topbar .container:before,
+nav.topbar .container:after {
+  display: none;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background: none;
+}
+.topbar,
+.topbar > .container, .topbar > .container-fluid {
+  height: 60px;
+}
+.topbar-nav {
+  line-height: 60px;
+}
+.topbar.topbar-inverse,
+.topbar.topbar-inverse > .container, .topbar.topbar-inverse > .container-fluid {
+  height: 90px;
+}
+.topbar-inverse .topbar-nav {
+  line-height: 90px;
+}
+.logo-light {
+  display: none;
+}
+.logo-dark {
+  display: block;
+}
+body.body-scrolled .logo-dark,
+.topbar-inverse .logo-light {
+  display: block;
+}
+body.body-scrolled .logo-light,
+.topbar-inverse .logo-dark {
+  display: none;
+}
+.topbar + .main-content {
+  padding-top: 90px;
+}
+.topbar.topbar-inverse + .main-content {
+  padding-top: 0px;
+}
+
+.view-portfolio-category {
+  margin-bottom: 30px;
+}
+.view-portfolio-category .views-row {
+  display: inline-block;
+  margin: 0 10px;
+}
